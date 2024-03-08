@@ -16,7 +16,7 @@ USE Cesi_BDE;
 
 DELIMITER //
 
-CREATE PROCEDURE GetCountYourEvent(
+CREATE PROCEDURE GetCountYourEvents(
     IN p_UserID INT,
     OUT count INT
 )

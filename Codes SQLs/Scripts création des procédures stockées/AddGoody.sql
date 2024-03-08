@@ -11,15 +11,17 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/*Création d'une procédure permettant d'ajouter un Goody*/
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
-  IN p_UserID INT,
-  IN p_Email VARCHAR(255)
+CREATE PROCEDURE AddGoody (
+  IN p_Name VARCHAR(255),
+  IN p_Description TEXT,
+  IN p_Price INT,
+  IN p_Category TEXT
 )
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+  INSERT INTO Goodies (Name, Description, Price, Category)
+  VALUES (p_Name, p_Description, p_Price, p_Category);
 END //
 DELIMITER ;

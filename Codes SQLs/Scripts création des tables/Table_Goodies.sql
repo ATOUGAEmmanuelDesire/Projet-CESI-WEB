@@ -7,8 +7,8 @@
     -TSAJIO Fils Logan
     -TIAM DJOFANG Rita Joyce Emmanuela*/
 
-/* Activation de la base de données Shop */
-USE Shop;
+/* Activation de la base de données Cesi_BDE */
+USE Cesi_BDE;
 
 /* Création de la table Goodies */
 CREATE TABLE Goodies (
@@ -28,4 +28,3 @@ VALUES
 ('Sac à dos X2027', 'Sac à dos pratique avec le logo de la promotion X2027', 25, 'Accessoires'),
 ('Stylo X2027', 'Stylo avec le logo de la promotion X2027', 5, 'Fournitures'),
 ('Carnet X2027', 'Carnet avec le logo de la promotion X2027', 8, 'Fournitures');
-

@@ -1,4 +1,5 @@
 /*PROJET WEB
+Promotion X2027
     GROUPE 05 :
     -ATOUGA II Emmanuel Désiré
     -JODOM CHOUDJA Karell Steve
@@ -7,8 +8,8 @@
     -TSAJIO Fils Logan
     -TIAM DJOFANG Rita Joyce Emmanuela*/
 
-/* Activation de la base de données Users */
-USE Users;
+/* Activation de la base de données Cesi_BDE */
+USE Cesi_BDE;
 
 /* Création de la table Users */
 CREATE TABLE Users (
@@ -18,11 +19,11 @@ CREATE TABLE Users (
   Email_address VARCHAR(220) NOT NULL,
   Password VARCHAR(255) NOT NULL,
   Statut INT NOT NULL,
+  UNIQUE (Email_address),
   CONSTRAINT chk_Statut CHECK (Statut IN (1, 2, 3))
 );
 
 /* Insertions valides */
-
 INSERT INTO Users (Name, Surname, Email_address, Password, Statut)
 VALUES
 ('John', 'Doe', 'john.doe@example.com', 'mypassword', 1),

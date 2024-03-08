@@ -11,15 +11,15 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/*Création d'une procédure permettant de retirer son commentaire à un évènement*/
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
-  IN p_UserID INT,
-  IN p_Email VARCHAR(255)
+CREATE PROCEDURE RemoveOwnEventComment (
+  IN p_CommentID INT,
+  IN p_UserID INT
 )
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+  DELETE FROM Events_Comments
+  WHERE id = p_CommentID AND id_Users = p_UserID;
 END //
 DELIMITER ;

@@ -11,15 +11,14 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/*Création d'une procédure permettant d'afficher la liste des inscriptions*/
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
-  IN p_UserID INT,
-  IN p_Email VARCHAR(255)
-)
+CREATE PROCEDURE GetAllEventRegistrations ()
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+  SELECT ER.id, E.Name, U.Name, ER.Email_address_Users
+  FROM Events_Registrations ER
+  INNER JOIN Events E ON ER.id_Events = E.id
+  INNER JOIN Users U ON ER.id_Users = U.id;
 END //
 DELIMITER ;

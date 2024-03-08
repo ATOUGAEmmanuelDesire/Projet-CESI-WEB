@@ -11,10 +11,10 @@ GROUPE 05 :
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/* Création d'une procédure permettant d'afficher les Evènements */
+/* Création d'une procédure permettant d'afficher les Evènements passés */
 DELIMITER //
-CREATE PROCEDURE GetEvents()
+CREATE PROCEDURE GetPastsEvents()
 BEGIN
-  SELECT * FROM Events WHERE Statut = 1;
+  SELECT * FROM Events WHERE Statut = 2;
 END //
 DELIMITER ;

@@ -11,15 +11,17 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/*Création de la procédure stockée est correctement définie. Elle affiche les notifications d'un utilisateur spécifique*/
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
-  IN p_UserID INT,
-  IN p_Email VARCHAR(255)
-)
+
+CREATE PROCEDURE AfficherNotifications(
+    IN userId INT
+    )
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+    SELECT notification_text 
+    FROM Notifications 
+    WHERE id_Users = userId AND is_read = TRUE;
 END //
+
 DELIMITER ;

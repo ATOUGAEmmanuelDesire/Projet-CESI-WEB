@@ -1,5 +1,4 @@
 /*PROJET WEB
-Promotion X2027
     GROUPE 05 :
     -ATOUGA II Emmanuel Désiré
     -JODOM CHOUDJA Karell Steve
@@ -11,12 +10,14 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'afficher des Goodies*/
+/* Création de la procédure permettant de supprimer une Image*/
 
 DELIMITER //
-CREATE PROCEDURE GetGoodies ()
+CREATE PROCEDURE DeleteImage (
+  IN p_ImageID INT
+)
 BEGIN
-  SELECT id, Name, Description, Price, Category
-  FROM Goodies;
+  DELETE FROM Images
+  WHERE id = p_ImageID;
 END //
 DELIMITER ;

@@ -1,5 +1,4 @@
 /*PROJET WEB
-Promotion X2027
     GROUPE 05 :
     -ATOUGA II Emmanuel Désiré
     -JODOM CHOUDJA Karell Steve
@@ -11,15 +10,15 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/* Création de la procédure permettant de Disliker une Image */
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
+CREATE PROCEDURE RemoveOwnImageLike (
   IN p_UserID INT,
-  IN p_Email VARCHAR(255)
+  IN p_ImageID INT
 )
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+  DELETE FROM Images_Likes
+  WHERE id_Users = p_UserID AND id_Images = p_ImageID;
 END //
 DELIMITER ;

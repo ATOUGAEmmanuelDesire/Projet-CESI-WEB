@@ -11,15 +11,17 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/*Création d'une procédure permettant d'ajouter un commentaire à un évènement*/
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
+CREATE PROCEDURE AddEventComment (
   IN p_UserID INT,
-  IN p_Email VARCHAR(255)
+  IN p_EventID INT,
+  IN p_EmailAddress VARCHAR(255),
+  IN p_Comment VARCHAR(1000)
 )
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+  INSERT INTO Events_Comments (id_Events, id_Users, Email_address_Users, Comments)
+  VALUES (p_EventID, p_UserID, p_EmailAddress, p_Comment);
 END //
 DELIMITER ;

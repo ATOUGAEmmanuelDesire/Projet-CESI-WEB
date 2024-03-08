@@ -11,15 +11,16 @@ Promotion X2027
 /* Activation de la base de données Cesi_BDE */
 USE Cesi_BDE;
 
-/*Création d'une procédure permettant d'ajouter une inscription à un évènement*/
+/*Création d'une procédure permettant de compter le nombre de like qu'une photo à reçu*/
+
 DELIMITER //
-CREATE PROCEDURE AddEventRegistration (
-  IN p_EventID INT,
-  IN p_UserID INT,
-  IN p_Email VARCHAR(255)
+CREATE PROCEDURE GetImageLikesCount (
+  IN p_ImageID INT,
+  OUT p_LikesCount INT
 )
 BEGIN
-  INSERT INTO Events_Registrations (id_Events, id_Users, Email_address_Users)
-  VALUES (p_EventID, p_UserID, p_Email);
+  SELECT COUNT(*) INTO p_LikesCount
+  FROM Images_Likes_Likes
+  WHERE id_Images = p_EventID;
 END //
 DELIMITER ;

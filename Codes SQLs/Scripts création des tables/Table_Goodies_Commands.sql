@@ -26,7 +26,7 @@ CREATE TABLE Goodies_Commands (
 
 /* Insertions valides */
 
-INSERT INTO Goodies_CommandsCommands (Email_address, id_Users, Goodies, id_Goodies)
+INSERT INTO Goodies_Commands (Email_address, id_Users, Goodies, id_Goodies)
 VALUES
 ('john.doe@example.com', 1, 'T-shirt X2027', 1),
 ('jane.smith@example.com', 2, 'Mug X2027', 2),

@@ -14,7 +14,7 @@ USE Cesi_BDE;
 /*Création d'une procédure permettant de mettre à jour le statut d'un Utilisateur*/
 
 DELIMITER //
-CREATE PROCEDURE UpdateUserStatut1 (
+CREATE PROCEDURE UpdateUserStatut3 (
   IN p_UserID INT
 )
 BEGIN

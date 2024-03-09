@@ -21,7 +21,7 @@ CREATE TABLE Events (
   begin_the DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
   time_events VARCHAR(225) NOT NULL,
   Statut INT NOT NULL,
-  CONSTRAINT chk_Statut CHECK (Statut IN (0, 1, 2)),
+  CONSTRAINT chk_Statut_Events CHECK (Statut IN (0, 1, 2)),
   FOREIGN KEY (id_Users) REFERENCES Users (id)
 );
 

@@ -13,7 +13,21 @@ const optionbd = {
 
 const app = express();
 
-app.get('/accueil', (req, res)=>{
+app.get('/cesi-bde/accueil', (req, res)=>{
     res.status(200).sendFile('fronTest/accueil.html', {root : __dirname});
 })
+
+app.get('/cesi-bde/inscription', (req, res)=>{
+    res.status(200).sendFile('frontTest/inscription.php', {root: __dirname});
+})
+app.get('/cesi-bde/connexion', (req, res)=>{
+    res.status(200).sendFile('frontTest/connexion.php', {root: __dirname});
+})
+app.get('/cesi-bde/social', (req, res)=>{
+    res.status(200).sendFile('fronTest/social.html', {root : __dirname});
+})
+app.get('/cesi-bde/boutique', (req, res)=>{
+    res.status(200).sendFile('frontTest/boutique.htm', {root: __dirname});
+})
+
 app.listen(3000);

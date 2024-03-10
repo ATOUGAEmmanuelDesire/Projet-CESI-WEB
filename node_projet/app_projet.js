@@ -1,6 +1,18 @@
 const express = require('express')
+const mysql = require('mysql')
+const myConnection = require('express-myconnection')
+
+const optionBD = {
+    host : 'localhost',
+    user : 'root',
+    password : 'inconnu_X2027',
+    port : '3306',
+    database : 'cesi_bde'
+}
+
 const app = express();
 
+app.use(myConnection(mysql, optionBD, 'pool'))
 app.set('view engine', 'ejs')
 app.set('views', 'frontTest')
 

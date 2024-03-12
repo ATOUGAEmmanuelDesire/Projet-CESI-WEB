@@ -1,10 +1,13 @@
 const express =  require('express')
-const app = express();
 const router = require('./controller/router')
+const bodyParser = require('body-parser')
+
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'frontTest');
 
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('public'));
 app.use('/', router);
 

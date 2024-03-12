@@ -18,9 +18,10 @@ CREATE PROCEDURE AddUser (
   IN p_Email_address VARCHAR(220),
   IN p_Password VARCHAR(255),
   IN p_Statut INT
+  IN p_Localisation VARCHAR(255),
 )
 BEGIN
-  INSERT INTO Users (Name, Surname, Email_address, Password, Statut)
-  VALUES (p_Name, p_Surname, p_Email_address, p_Password, p_Statut);
+  INSERT INTO Users (Name, Surname, Email_address, Password, Statut, Localisation)
+  VALUES (p_Name, p_Surname, p_Email_address, p_Password, p_Statut, p_Localisation);
 END //
 DELIMITER ;

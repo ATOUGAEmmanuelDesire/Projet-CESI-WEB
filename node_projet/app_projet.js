@@ -1,6 +1,5 @@
 const express =  require('express')
 const router = require('./controller/router')
-
 const app = express();
 
 app.set('view engine', 'ejs');

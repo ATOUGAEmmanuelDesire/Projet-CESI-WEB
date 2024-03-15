@@ -1,12 +1,12 @@
 const db =  require('../utils/dbconnector.js')
+const UserModel = require('../models/user')
 // const post = {
 //     name: req.body.Name,
 //     surname: req.body.Surname,
 //     email: req.body.Email_address,
 //     password: req.body.Password,
 //     status: 0,
-//     localisation: req.body.Localisation
-// }
+//
 
 exports.submitForm = async (req, res)=>{
     const name = req.body.Name

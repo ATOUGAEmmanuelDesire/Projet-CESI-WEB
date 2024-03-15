@@ -1,8 +1,7 @@
 const express = require('express')
 const router =  express.Router();
 
-const notfound = require('../middleware/notfound')
-const formController = require('../controller/formController')
+const notfound = require('../middleware/notfound');
 
 const accueilController = require('../controller/accueilController');
 const inscriptionController =  require('../controller/inscriptionController')

@@ -11,9 +11,12 @@ class UserModel {
         }
         return null;
     }
-    static async register(name, surname, email, password, localisation, status){
+    static async register(name, surname, email, password, status, localisation){
         try{
-            const[result] = await db.execute('INSERT INTO Users (name, surname, email, password, localisation, status) VALUES (?,?,?,?,?,?)', [name, surname, email, password, localisation, status])
+            const params = [name, surname, email, password, status, localisation]
+            const sanitizedParams = params.map(value => (typeof value !== 'undefined' ? value : "importe"));
+            const[result] = await db.execute('INSERT INTO Users (Name, Surname, Email_address, Password, Statut, Localisation) VALUES (?,?,?,?,?,?)', sanitizedParams)
+            //const[result] = await db.execute('CALL AddUser(?,?,?,?,?,?)', sanitizedParams)
             return result.insertId;
         }catch (error){
             throw error;

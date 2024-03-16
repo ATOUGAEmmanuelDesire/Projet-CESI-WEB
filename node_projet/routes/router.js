@@ -11,13 +11,13 @@ const  eventsController = require('../controller/eventsController');
 const socialController = require('../controller/socialController');
 const boutiqueController = require('../controller/boutiqueController');
 
-router.get('/cesi-bde/boutique', boutiqueController.renderBoutique)
-router.get('/cesi-bde/accueil', accueilController.renderAccueil)
-router.get('/cesi-bde/inscription', inscriptionController.renderInscription)
-router.get('/cesi-bde/connexion', connexionController.renderConnexion)
+router.get('/boutique', boutiqueController.renderBoutique)
+router.get('/accueil', accueilController.renderAccueil)
+router.get('/inscription', inscriptionController.renderInscription)
+router.get('/connexion', connexionController.renderConnexion)
 
-router.get('/cesi-bde/events', eventsController.renderEvents)
-router.get('/cesi-bde/social', socialController.renderSocial)
+router.get('/events', eventsController.renderEvents)
+router.get('/social', socialController.renderSocial)
 
 router.use(notfound)
 module.exports = router;

@@ -36,7 +36,7 @@ exports.signForm = async (req, res)=>{
         // await db.query("INSERT INTO Users(?,?,?,?,?,?)", [name, surname, email, password, status, localisation])
         const insert = await db.query("CALL AddUser(?,?,?,?,?,?)", [name, surname, email ,password, status, localisation])
         res.return(insert)
-        res.status(200).send("/cesi-bde/accueil")
+        res.status(200).send("cesi-bde/accueil")
 
     }catch (error){
         console.error('Erreur lors de l\'insertion des données : ', error);

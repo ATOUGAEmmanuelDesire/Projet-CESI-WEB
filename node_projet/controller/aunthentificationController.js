@@ -10,6 +10,7 @@ class AuthController {
                 const userId = user.id;
                 const token = jwt.sign({ userId, email }, 'secretKey', { expiresIn: '4h' });
                 res.status(200).json({ message: 'Connexion réussie', user, token });
+                res.redirect('cesi-bde/accueil')
             } else {
                 res.status(401).json({ message: 'Email ou mot de passe incorrect' });
             }
@@ -20,10 +21,17 @@ class AuthController {
     }
 
     static async register(req, res) {
-        const { name, surname, email, password, localisation, status } = req.body;
+        const { name, surname, email, password, localisation} = req.body;
+        // const name = req.body.name
+        // const surname = req.body.surname
+        // const email = req.body.email
+        // const localisation = req.body.localisation
+        // const password =  req.body.password
+        const status = 1
         try {
-            const userId = await UserModel.register(name, surname, email, password, localisation, status);
+            const userId = await UserModel.register(name, surname, email, password,  status, localisation);
             res.status(201).json({ message: 'Utilisateur enregistré avec succès', userId });
+            res.send('/cesi-bde/accueil')
         } catch (error) {
             console.error('Erreur lors de l\'enregistrement de l\'utilisateur: ', error);
             res.status(500).json({ message: 'Erreur lors de l\'enregistrement des données' });

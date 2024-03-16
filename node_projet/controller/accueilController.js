@@ -1,5 +1,5 @@
 exports.renderAccueil =  (req, res, next)=>{
-    res.status(200).render('accueil');
+    res.status(200).render('Home');
 }
 
 // db.query('CALL ', (error, results, fields)=>{

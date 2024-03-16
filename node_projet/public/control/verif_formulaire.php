@@ -2,7 +2,8 @@
 $email_err= '';
 $password_err = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+//if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+if (isset($_POST['submit']))  {
     $email = $_POST['email'];
     $password = $_POST['password'];
 

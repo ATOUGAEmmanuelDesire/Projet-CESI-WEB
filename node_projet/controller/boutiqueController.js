@@ -5,11 +5,13 @@ exports.renderBoutique = async (req, res, next) => {
     try {
         const [rows] = await db.query("SELECT * FROM goodies");
         // const [rows] = await db.query("CALL GetGoodies");
-        res.render('boutique', { produits: rows })
+        res.render('shop', { produits: rows })
     } catch (error) {
         console.error('Erreur lors de la récupération des données : ', error);
         res.status(500).json({ message: "Erreur lors de la récupération des données" });
     }
 };
 
-
+// exports.renderBoutique = async (req, res, next)=>{
+//     res.render('shop')
+// }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Formulaires.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+    <title>Add a BDE member</title>
+</head>
+<body>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-1" style="width: 40%;">
+            <h2>Give the id of student you want to add to the BDE</h2><br>
+            <form action=" nom du fichier de vérification" method="post">
+                <div class="mb-3">
+                    <label for="id" class="form-label">User id:</label><br><br>
+                    <input type="int" name="id" class="form-control" id="id" aria-describedby="id"><br>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <?php require_once "footer.html"; ?>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+    <title>Shop</title>
+</head>
+
+<body>
+    <section id="home" class="home-container"> <!-- Section for the home page content -->
+        <header id="header" class="header">
+            <img src="image.png" alt="Nature Emoi" class="logo">
+            <ul class="nav-links"> <!-- Unordered list for navigation links -->
+                <li>
+                    <a href="Home.html" data-text="Home">Home</a>
+                </li>
+                <li>
+                    <a href="shop.html" data-text="Shop">Shop</a>
+                </li>
+                
+                <li>
+                    <a href="Events.html" data-text="Events">Events</a>
+                </li>
+                <li>
+                    <a href="Social.html" data-text="Social">Social</a>
+                </li> 
+                <li>
+                    <a href="Administration.html" data-text="Administration">Administration</a>
+                </li>
+            </ul>
+            <div  >
+                <a href="" class="panier fas fa-truck" ></a>
+            </div>
+            <div class="burger-container"> <!-- Container for burger menu -->
+                <div class="burger"></div> <!-- Burger menu icon -->
+
+            </div>
+        </header>
+        <div class="landing"> <!-- Div for landing page content -->
+            <h1 class="big-title">Buy. Smile. Repeat.</h1> <!-- Heading with text -->
+            <a href="#delivery" class="delivery-link">
+                <span class="scroll-text" data-text="Scroll">Scroll</span> <!-- Span for scroll text -->
+                <i class="scroll-icon fas fa-angle-down"></i>
+            </a>
+        </div>
+    </section>
+    <section id="delivery" class="delivery-container"> <!-- Section for delivery information -->
+        <div class="shop">
+            <i class="delivery-icon fas fa-store"></i>
+            <p class="box-content">
+                Our stores at your service          </p>
+        </div>
+        <div class="withdrawal"> <!-- Div for withdrawal information -->
+            <i class="delivery-icon fas fa-people-carry"></i>
+            <p class="box-content">
+                Contactless in-store pickup            </p>
+        </div>
+        <div class="delivery"> <!-- Div for delivery information -->
+            <i class="delivery-icon fas fa-truck"></i>
+            <p class="box-content">
+Contactless home delivery            </p>
+        </div>
+    </section>
+    <div class="content">
+        <section class="search-bar">
+          <input type="text" placeholder="Search Item">
+          <button>Search</button>
+        </section>
+    </div>
+
+    <section id="best-sales" class="best-sales-container"> <!-- Section for best sellers -->
+        <h1 class="section-title">Best sellers</h1><br> <!-- Heading for best sellers -->
+        <div class="produit">
+            <div class="produit">
+                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
+                <div class="title">Nom du produit</div>
+                <div class="description">Description du produit</div>
+                <div class="price">Date</div>
+              </div><br>
+    
+              <div class="produit">
+                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
+                <div class="title">Nom du produit</div>
+                <div class="description">Description du produit</div>
+                <div class="price">Date</div>
+              </div><br>
+    
+              <div class="produit">
+                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
+                <div class="title">Nom du produit</div>
+                <div class="description">Description du produit</div>
+                <div class="price">Date</div><br>
+              </div>
+            </div>
+
+    </section>
+    <section id="plants" class="plants-container">
+        <h1 class="section-title">Goodies</h1>
+    <br>
+        <div class="produit">
+            <div class="produit">
+                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
+                <div class="title">Nom du produit</div>
+                <div class="description">Description du produit</div>
+                <div class="price">Date</div>
+              </div><br>
+    
+              <div class="produit">
+                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
+                <div class="title">Nom du produit</div>
+                <div class="description">Description du produit</div>
+                <div class="price">Date</div>
+              </div><br>
+    
+              <div class="produit">
+                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
+                <div class="title">Nom du produit</div>
+                <div class="description">Description du produit</div>
+                <div class="price">Date</div><br>
+              </div>
+            </div>
+
+    </section>
+    <footer id="footer" class="footer"> <!-- Footer section -->
+        <span class="copyrights">&copy; 2024 - THe BDe</span>
+        <a href="#" class="conditions">Condition générales de vente</a>
+    </footer>
+    <script>
+        const burgerContainer = document.querySelector('.burger-container'); // Selects the burger menu container
+        const navLinks = document.querySelector('.nav-links'); // Selects the navigation links
+
+        burgerContainer.addEventListener('click', () => { // Adds a click event listener to the burger menu container
+            burgerContainer.classList.toggle('active'); // Toggles the 'active' class on burger menu container
+            navLinks.classList.toggle('active'); // Toggles the 'active' class on navigation links
+        })
+    </script>
+</body>
+
+</html>

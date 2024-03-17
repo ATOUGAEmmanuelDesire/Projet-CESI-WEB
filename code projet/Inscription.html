@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THe BDe</title>
+    <link rel="stylesheet" href="Inscription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+
+    
+</head>
+<body>
+    <div class="contenair">
+        <video autoplay loop muted plays-inline class="video">
+            <source src="production_id_5155473 (1080p).mp4" type="video/mp4">
+    
+        </video>
+        <section class="section0"> <!-- Section element for a specific section of content -->
+            <img src="image.png" alt="logo du site" class="logo">
+        </section>
+        
+        <section class="section1"> <!-- Section element for a specific section of content -->
+            <h1 class="h1">Explore. Events. Shop. Welcome !</h1>
+            <i class="fas fa-user-circle connect "></i>
+            <h2 class="h2">Inscription</h2>
+            <br>
+            <form action="/votre-page-de-traitement" method="POST"> <!-- Form element with action and method attributes, and onSubmit event -->
+                <div class="form-group">
+                    <label for="name">Name :</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname :</label>
+                    <input type="text" id="surname" name="surname">
+                </div>
+                <div class="form-group">
+                    <label for="localisation">Location :</label>
+                    <input type="text" id="location" name="location">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" name="password" required>
+                    <a href="index.html" class="kodes">You have an account?sign in</a>
+                    <span id="passwordError" class="error"></span>
+
+                </div>
+        
+                <input type="submit" value="Sign Up">
+            </form>
+            <!-- JavaScript function to validate form -->
+            <script>
+                function validateForm() { 
+                    var password = document.getElementById("password").value;
+                    var uppercaseRegex = /[A-Z]/;
+                    var numberRegex = /[0-9]/;
+        
+                    if (!uppercaseRegex.test(password) || !numberRegex.test(password)) {
+                        document.getElementById("passwordError").innerHTML = "the password must have  minimum a capital letter and a number ";
+                        return false;
+                    }
+        
+                    return true;
+                }
+            </script> 
+            
+
+        </section>
+        
+
+    </div>
+    
+    
+      
+    
+</body>
+</html> 

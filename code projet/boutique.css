@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.jus{
+    display: flex;
+    margin: 250px;
+    height: 200px;
+    justify-content: space-evenly;
+    size: 10px;
+    font-size: 10px;
+    
+}
+.jus1{
+    height: 10px;
+    font-size: 50px;
+    size: 10px;
+
+}

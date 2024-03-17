@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Formulaires.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+    <title>Ideas box</title>
+</head>
+<body>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-1" style="width: 40%; ">
+            <h2>Send your ideas here</h2><br>
+            <form action=" nom du fichier de vérification" method="post">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name of the event :</label><br><br>
+                    <input type="text" name="Name" class="form-control" id="Name" aria-describedby="Name"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description :</label><br><br>
+                    <input type="text" name="Description" class="form-control" id="Description"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">Date of the event :</label><br><br>
+                    <input type="datetime" name="type" class="form-control" id="datetime"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">Event image (URL LINK) :</label><br><br>
+                    <input type="datetime" name="type" class="form-control" id="datetime"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">begin the :</label><br><br>
+                    <input type="datetime" name="type" class="form-control" id="datetime"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">Time of the event (1h ? 2h ?...):</label><br><br>
+                    <input type="datetime" name="type" class="form-control" id="datetime"><br>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <?php require_once "footer.html"; ?>
+
+    <script src="script.js"></script>
+</body>
+</html>

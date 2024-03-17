@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Social.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+</head>
+<body>
+    <section id="home" class="home-container">
+        <header id="header" class="header">
+            <img src="image.png" alt="Nature Emoi" class="logo">
+            <ul class="nav-links">
+                <li>
+                    <a href="Home.html" data-text="Home">Home</a>
+                </li>
+                <li>
+                    <a href="shop.html" data-text="Shop">Shop</a>
+                </li>
+                
+                <li>
+                    <a href="Events.html" data-text="Events">Events</a>
+                </li>
+                <li>
+                    <a href="Social.html" data-text="Social">Social</a>
+                </li>
+                
+            </ul>
+            <div class="burger-container">
+                <div class="burger"></div>
+            </div>
+        </header>
+        <div class="landing">
+            <h1 class="big-title">#SocialMedia.</h1>
+            
+        </div>
+    </section>
+
+    <div class="container site">
+        <nav class="sidebar">
+            <a href="" class="sidebar-home">Add picture</a>
+            <a href="" class="sidebar-messages">Remove picture</a>
+            <a href="" class="sidebar-events">Download picture</a>
+            <a href="" class="sidebar-group">Validate</a>
+        </nav>
+        <main class="main">
+            <article class="card">
+                <header class="card-header card-header-avatar">
+                    <img src="image.png" width="43" height="43"  class="card-avatar">
+                    <div class="card-title">THe BDe</div>
+                    <div class="card-time"> since 10s</div>
+                </header>
+                
+                <div class="card-body">
+                    <p>
+                        <img src="social1.jpg" alt="social" class="fullwidth">
+                    </p>
+                    <p>
+                        do you like this event? it makes for you
+                    </p>
+                    <p>
+                        Im sure it can be a revolution for our university
+                    </p>
+                </div>
+                <footer class="card-footer">
+                    <div class="card-like">102 likes</div>
+                    <div class="card-comments">102 comments</div>
+                </footer>
+            </article>
+        </main>
+    </div>
+    <footer id="footer" class="footer">
+        <span class="copyrights">&copy; 2024 - THe BDe</span>
+        <a href="#" class="conditions">Condition générales de vente</a>
+    </footer>
+    <script>
+        const burgerContainer = document.querySelector('.burger-container');
+        const navLinks = document.querySelector('.nav-links');
+
+        burgerContainer.addEventListener('click', () => {
+            burgerContainer.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        })
+    </script>
+
+</body>
+</html>

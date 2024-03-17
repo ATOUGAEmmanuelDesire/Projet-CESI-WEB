@@ -1,0 +1,63 @@
+body{
+  background-color: #FAF4E8;
+}
+
+/* Style pour le conteneur principal */
+.row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Style pour le formulaire */
+  .col-1 {
+    width: 40%;
+    
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .btn-primary {
+    background-color:#f0bb0d;
+    color: rgb(10, 2, 2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #eeff00;
+  }
+  
+  body {
+    background-image: url('nom_fichier.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  /* Ajoutez d'autres styles CSS personnalisés selon vos besoins */
+
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

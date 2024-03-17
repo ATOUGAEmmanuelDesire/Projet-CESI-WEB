@@ -2,10 +2,10 @@ const db = require('../utils/dbconnector')
 
 class UserModel {
     static async authenticate(email, password){
-        const[row] = await db.execute('SELECT * FROM users WHERE  email = ? LIMIT 1', [email])
+        const[row] = await db.execute(`SELECT * FROM users WHERE  Email_address = ? LIMIT 1`, [email])
         if(row.length>0){
             const user = row[0];
-            if(user.password === password){
+            if(user.Password === password){
                 return user;
             }
         }
@@ -15,13 +15,14 @@ class UserModel {
         try{
             const params = [name, surname, email, password, status, localisation]
             const sanitizedParams = params.map(value => (typeof value !== 'undefined' ? value : "importe"));
-            const[result] = await db.execute('INSERT INTO Users (Name, Surname, Email_address, Password, Statut, Localisation) VALUES (?,?,?,?,?,?)', sanitizedParams)
-            //const[result] = await db.execute('CALL AddUser(?,?,?,?,?,?)', sanitizedParams)
+            //const[result] = await db.execute('INSERT INTO Users (Name, Surname, Email_address, Password, Statut, Localisation) VALUES (?,?,?,?,?,?)', sanitizedParams)
+            const[result] = await db.execute('CALL AddUser(?,?,?,?,?,?)', sanitizedParams)
             return result.insertId;
         }catch (error){
             throw error;
         }
     }
+
 }
 
 module.exports = UserModel;

@@ -12,6 +12,4 @@ exports.renderBoutique = async (req, res, next) => {
     }
 };
 
-// exports.renderBoutique = async (req, res, next)=>{
-//     res.render('shop')
-// }
+

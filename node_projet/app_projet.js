@@ -6,6 +6,7 @@ const session = require('express-session')
 const userRoutes =  require('./routes/users')
 const productRoutes = require('./routes/Product')
 const eventsRoutes = require('./routes/events')
+const socialRoutes = require('./routes/social')
 const userController = require('./controller/aunthentificationController')
 
 app.set('view engine', 'ejs');
@@ -21,10 +22,11 @@ app.use(session({
     saveUninitialized: false
 }))
 app.use('/cesi-bde/product', productRoutes)
+app.use('/cesi-bde/so', socialRoutes)
 app.use('/auth', userRoutes, userController.verifyToken);
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
-app.use('/cesi-bde/ev/', eventsRoutes)
+app.use('/cesi-bde/ev', eventsRoutes)
 app.use('/cesi-bde', router, userController.verifyToken);
 
 app.listen(3000, ()=>{

@@ -16,7 +16,6 @@ router.get('/accueil', accueilController.renderAccueil)
 router.get('/inscription', inscriptionController.renderInscription)
 router.get('/connexion', connexionController.renderConnexion)
 
-router.get('/social', socialController.renderSocial)
 
 router.use(notfound)
 module.exports = router;

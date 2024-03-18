@@ -35,14 +35,19 @@ class EventsController{
         }
     }
 
-    static async deleteEvents(req, res){
-        try{
-            const result = await eventsModel.deleteEvents();
-            res.status(200).alert("événement supprimer ave succès")
-        }catch (erro){
-            console.error("Erreur lors de la suppression des données")
-            res.status(500).json({message: 'Erreur lors de l\'rengistrement'})
+    static async deleteEvents(req, res) {
+        const {id} = req.body;
+        try {
+            const result = await eventsModel.deleteEvents(id);
+            res.status(200).json(result);
+        } catch (error) {
+            console.error("Erreur lors de la suppression des données :", error);
+            res.status(500).json({ message: 'Erreur lors de la suppression des données' });
         }
+    }
+
+    static  async renderIdeas(req, res){
+        res.status(200).render('Ideas')
     }
 }
 

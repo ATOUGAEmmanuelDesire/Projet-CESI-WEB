@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+    <title>Administration</title>
+</head>
+<body>
+<header id="header" class="header">
+    <img src="/css/image.png" alt="Nature Emoi" class="logo">
+    <ul class="nav-links"> <!-- Unordered list for navigation links -->
+        <li>
+            <a href="/cesi-bde/accueil" data-text="Home">Home</a>
+        </li>
+
+
+        <li>
+            <a href="/cesi-bde/boutique" data-text="Shop">Shop</a>
+        </li>
+
+        <li>
+            <a href="/cesi-bde/events" data-text="Events">Events</a>
+        </li>
+        <li>
+            <a href="/cesi-bde/so/social" data-text="Social">Social</a>
+        </li>
+        <li>
+            <a href="/cesi-bde/administration" data-text="Adminstration">Adminstration</a>
+        </li>
+
+
+    </ul>
+    <div class="burger-container"> <!-- Container for burger menu -->
+        <div class="burger"></div> <!-- Burger menu icon -->
+
+    </div>
+</header>
+<section class="text">
+    <h1><span id="auto-typing" class="auto-typing"></span></h1>
+    <p>The Student Union is the beating heart of campus life. It's where ideas are born,<br> friendships are forged, and memories are made.<br> Picture a dynamic space where laughter fills the air and lively discussions echo off the walls.<br> Every noticeboard is a call to action, and every event is a reason to celebrate.<br>
+        More than just a physical location, <br>the Student Union is the spiritual center of the student community.</p>
+
+    <ul class="nav-links"> <!-- Unordered list for navigation links -->
+        <li>
+            <a href="/cesi-bde/accueil" >Ajouter un membre du BDE</a>
+        </li>
+        <li>
+            <a href="/cesi-bde/boutique" >Retirer un utilisateur</a>
+        </li>
+
+        <li>
+            <a href="/cesi-bde/boutique" >Retirer un membre au BDE</a>
+        </li>
+    </ul>
+</section>
+<div class="overlay">
+
+</div>
+<%include ('footer.ejs')%>
+<script>
+    const burgerContainer = document.querySelector('.burger-container');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerContainer.addEventListener('click', () => {
+        burgerContainer.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    })
+</script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+    var typed = new Typed('#auto-typing',{
+        strings: ['Welcome on THe BDe','About us','Come here my dear'],
+        typeSpeed:100,
+        backSpeed: 100,
+        loop: true,
+        fadeOut: true,
+        fadeOutClass:'typed-fade-out',
+        fadeOutClassDelay: 500,
+        shuffle: true
+    })
+</script>
+
+</body>
+</html>

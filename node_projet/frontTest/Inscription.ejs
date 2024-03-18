@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THe BDe</title>
+    <link rel="stylesheet" href="/css/Inscription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="contenair">
+        <video autoplay loop muted plays-inline class="video">
+            <source src="/img/production_id_5155473 (1080p).mp4" type="video/mp4">
+    
+        </video>
+        <section class="section0"> <!-- Section element for a specific section of content -->
+            <img src="/img/image.png" alt="logo du site" class="logo">
+        </section>
+        
+        <section class="section1"> <!-- Section element for a specific section of content -->
+            <h1 class="h1">Explore. Events. Shop. Welcome !</h1>
+            <i class="fas fa-user-circle connect "></i>
+            <h2 class="h2">Inscription</h2>
+            <br>
+            <form  method="POST" id="userForm"> <!-- Form element with action and method attributes, and onSubmit event -->
+                <div class="form-group">
+                    <label for="name">Name :</label>
+                    <input type="text" id="name" name="name"><br>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname :</label>
+                    <input type="text" id="surname" name="surname"><br>
+                </div>
+                <div class="form-group">
+                    <label for="localisation">Location :</label>
+                    <input type="text" id="localisation" name="location"><br>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email"><br>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" name="password" required>
+                    <span id="passwordError" class="error"></span><br>
+
+                </div>
+        
+                <input type="submit" value="Sign Up" name="submit">
+            </form>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('#userForm').submit(function(event){
+                        event.preventDefault();
+                        let formData = $(this).serializeArray();
+                        let jsonData = {};
+                        formData.forEach(function(field){
+                            jsonData[field.name] = field.value;
+                        });
+
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("POST", "http://localhost:3000/auth/register", true);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.onload = function(){
+                            if(xhr.status === 200){
+                                console.log(xhr.responseText);
+                                window.location.href = "/cesi-bde/connexion"; // Redirection vers une page après une réponse réussie
+                            }else{
+                                console.error("Erreur lors de l'envoi des données", xhr.statusText);
+                                alert("Erreur lors de l'inscription");
+                            }
+                        };
+                        xhr.onerror = function(){
+                            console.error("Erreur lors de l'envoi des données.");
+                            alert("Erreur lors de l'inscription");
+                        };
+
+                        xhr.send(JSON.stringify(jsonData));
+                    });
+                });
+            </script>
+            <!-- JavaScript function to validate form -->
+<!--            <script>-->
+<!--                function validateForm() { -->
+<!--                    var password = document.getElementById("password").value;-->
+<!--                    var uppercaseRegex = /[A-Z]/;-->
+<!--                    var numberRegex = /[0-9]/;-->
+<!--        -->
+<!--                    if (!uppercaseRegex.test(password) || !numberRegex.test(password)) {-->
+<!--                        document.getElementById("passwordError").innerHTML = "Le mot de passe doit contenir au moins une majuscule et un chiffre.";-->
+<!--                        return false;-->
+<!--                    }-->
+<!--        -->
+<!--                    return true;-->
+<!--                }-->
+<!--            </script> -->
+            
+
+        </section>
+        
+
+    </div>
+    
+    
+      
+    
+</body>
+</html> 

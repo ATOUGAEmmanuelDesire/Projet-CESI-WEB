@@ -1,0 +1,80 @@
+<!DOCTYPE html> <!-- Defines the document type as HTML5 -->
+<html lang="en"> <!-- Specifies the language of the document -->
+<head>
+    <meta charset="UTF-8"> <!-- Specifies the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sets the viewport for responsive design -->
+    <title>THe BDe</title> <!-- Sets the title of the document -->
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Links an external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Links an external CSS file for Font Awesome icons -->
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon"> <!-- Sets the favicon for the document -->
+
+</head>
+<body>
+    <div class="contenair"> <!-- Container div for the entire content -->
+        <video autoplay loop muted plays-inline class="video"> <!-- Video element with autoplay, loop, and muted attributes -->
+            <source src="/img/production_id_5155473 (1080p).mp4" type="video/mp4"> <!-- Specifies the video source -->
+        </video>
+        <img src="/img/image.png" alt="logo du site" class="logo"> <!-- Image element with alt text -->
+        <br><br><br><br> <!-- Line breaks for spacing -->
+        <section class="section1"> <!-- Section element for a specific section of content -->
+            <h1 class="h1">Explore. Events. Shop. Welcome !</h1> <!-- Heading 1 with text -->
+            <i class="fas fa-user  connect"></i> <!-- Font Awesome icon with classes for styling -->
+
+            <h2 class="h2">Sign In</h2> <!-- Heading 2 with text -->
+            <br> <!-- Line break for spacing -->
+            <form  method="POST" id="connectForm"> <!-- Form element with action and method attributes -->
+                <div class="form-group"> <!-- Div for form styling -->
+                    <label for="email">Email :</label><br> <!-- Label for email input -->
+                    <input type="email" id="email" name="email" required> <!-- Email input with required attribute -->
+                </div>
+
+                <div class="form-group"> <!-- Div for form styling -->
+                    <label for="password">Password :</label><br> <!-- Label for password input -->
+                    <input type="password" id="password" name="password" required> <!-- Password input with required attribute -->
+                </div>
+
+                <input type="submit" value="Log In" name="submit"> <!-- Submit button for the form -->
+            </form>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('#connectForm').submit(function(event){
+                        event.preventDefault();
+                        let formData = $(this).serializeArray();
+                        let jsonData = {};
+                        formData.forEach(function(field){
+                            jsonData[field.name] = field.value;
+                        });
+
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("POST", "http://localhost:3000/auth/login", true);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.onload = function(){
+                            if(xhr.status === 200){
+                                console.log(xhr.responseText);
+                                var response = JSON.parse(xhr.responseText);
+
+                                if(response.token){
+                                    localStorage.setItem('token', response.token);
+                                    console.log("ok");
+                                }
+                                window.location.href = "/cesi-bde/accueil"; // Redirection vers une page après une réponse réussie
+                            }else{
+                                console.error("Erreur lors de l'envoi des données", xhr.statusText);
+                                alert("Erreur lors de la connexion");
+                            }
+                        };
+                        xhr.onerror = function(){
+                            console.error("Erreur lors de l'envoi des données.");
+                            alert("Erreur lors de l'inscription");
+                        };
+
+                        xhr.send(JSON.stringify(jsonData));
+                    });
+                });
+            </script>
+<!--            <script src="/control/scriptform"></script>-->
+        </section>
+    </div>
+</body>
+</html>

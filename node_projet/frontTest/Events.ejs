@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Events.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+</head>
+<body>
+    <section id="home" class="home-container">
+        <header id="header" class="header">
+            <img src="/img/image.png" alt="Nature Emoi" class="logo">
+            <ul class="nav-links">
+                <li>
+                    <a href="/cesi-bde/accueil" data-text="Home" class="poi">Home</a>
+                </li>
+                <li>
+                    <a href="/cesi-bde/boutique" data-text="Shop" class="poi">Shop</a>
+                </li>
+                
+                <li>
+                    <a href="/cesi-bde/ev/events" data-text="Events" class="poi">Events</a>
+                </li>
+                <li>
+                    <a href="/cesi-bde/so/social"  data-text="Social" class="poi">Social</a>
+                </li>
+                <li>
+                    <a href="/cesi-bde/admin" data-text="Administration" class="poi">Administration</a>
+                </li>
+            </ul>
+            <div class="burger-container">
+                <div class="burger"></div>
+            </div>
+        </header>
+        <div class="landing">
+            <h1 class="big-title">#What's up?</h1>
+            
+        </div>
+        <nav class="sidebar">
+            <a href="Ideas_box_f.ejs" class="sidebar-home">Ideas box</a>
+            <a href="" class="sidebar-events">Download picture</a>
+            <a href="/cesi-bde/ev/pasts" class="sidebar-group">Pasts Events</a>
+            <a href="Ideas.ejs" class="sidebar-group">Ideas</a>
+        </nav>
+    </section>
+
+    <div class="container site">
+        
+        <h1 class="section-title">Events</h1> <!-- Heading for best sellers -->
+            <% events.forEach(function (ev) { %>
+                <div class="event">
+                    <img src="path_to_image_file.jpg" alt="Image du produit">
+                    <div class="title"><%= ev.Name %></div>
+                    <div class="description"><%= ev.Description %></div>
+                    <div class="begin-the"><%= ev.begin_the %></div>
+                    <a href="/cesi-bde/ev/delete" class="btn btn-primary" onclick="delete('<%= ev.id%>')">Remove event</a>
+                </div>
+                <br>
+            <% }); %>
+    </div>
+
+    <footer id="footer" class="footer">
+        <span class="copyrights">&copy; 2024 - THe BDe</span>
+        <a href="#" class="conditions">Condition générales de vente</a>
+    </footer>
+    <script>
+        const burgerContainer = document.querySelector('.burger-container');
+        const navLinks = document.querySelector('.nav-links');
+
+        burgerContainer.addEventListener('click', () => {
+            burgerContainer.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        })
+    </script>
+
+</body>
+</html>

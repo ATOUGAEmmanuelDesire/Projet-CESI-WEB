@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/Formulaires.css">
+    <title>Goodies</title>
+</head>
+<body>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-1" style="width: 40%; height: 50%;">
+            <h2>Add a Goodie here</h2><br>
+            <form action=" nom du fichier de vérification" method="post">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name :</label><br><br>
+                    <input type="text" name="Name" class="form-control" id="Name" aria-describedby="Name"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description :</label><br><br>
+                    <input type="text" name="Description" class="form-control" id="Description"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="Price" class="form-label">Price :</label><br><br>
+                    <input type="int" name="type" class="form-control" id="Price"><br>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">Category :</label><br><br>
+                        <input type="radio" name="category" id="Vetements">
+                        <label for="Animaux" class="form-label">Vetements</label><br><br>
+                        <input type="radio" name="category" id="Accessoire">
+                        <label for="Voyage" class="form-label">Accessoire</label><br><br>
+                        <input type="radio" name="category" id="Fournitures">
+                        <label for="Spiritualité" class="form-label">Fournitures</label><br><br>
+                        <input type="radio" name="category" id="Repas">
+                        <label for="Nature" class="form-label">Repas</label><br><br>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <%include ('footer.ejs')%>
+    <script src="script.js"></script>
+</body>
+</html>

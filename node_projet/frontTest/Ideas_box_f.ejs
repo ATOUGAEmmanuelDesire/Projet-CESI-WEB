@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/Formulaires.css">
+    <title>Ideas box</title>
+</head>
+<body>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-1" style="width: 40%; ">
+            <h2>Send your ideas here</h2><br>
+            <form id="formideas" method="post">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name of the event :</label><br><br>
+                    <input type="text" name="Name" class="form-control" id="Name" aria-describedby="Name"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description :</label><br><br>
+                    <input type="text" name="Description" class="form-control" id="Description"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Event image (URL LINK) :</label><br><br>
+                    <input type="file" name="url" class="form-control" id="image"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="datebegin" class="form-label">begin the :</label><br><br>
+                    <input type="date" name="type" class="form-control" id="datebegin"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="datetime" class="form-label">Time of the event (1h ? 2h ?...):</label><br><br>
+                    <input type="date" name="type" class="form-control" id="datetime"><br>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <script>
+                    $(document).ready(function(){
+                        $('#formideas').submit(function(event){
+                            event.preventDefault();
+                            let formData = $(this).serializeArray();
+                            let jsonData = {};
+                            formData.forEach(function(field){
+                                jsonData[field.name] = field.value;
+                            });
+
+                            let xhr = new XMLHttpRequest();
+                            xhr.open("POST", "http://localhost:3000/cesi-bde/ev/addevents", true);
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.onload = function(){
+                                if(xhr.status === 200){
+                                    console.log(xhr.responseText);
+                                    let response = JSON.parse(xhr.responseText);
+
+                                    if(response.token){
+                                        localStorage.setItem('token', response.token);
+                                        console.log("ok");
+                                    }
+                                    window.location.href = "/cesi-bde/ev/events"; // Redirection vers une page après une réponse réussie
+                                }else{
+                                    console.error("Erreur lors de l'envoi des données", xhr.statusText);
+                                    alert("Erreur lors de la connexion");
+                                }
+                            };
+                            xhr.onerror = function(){
+                                console.error("Erreur lors de l'envoi des données.");
+                                alert("Erreur lors de l'inscription");
+                            };
+
+                            xhr.send(JSON.stringify(jsonData));
+                        });
+                    });
+                </script>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <?php require_once "footer.html"; ?>
+
+</body>
+</html>

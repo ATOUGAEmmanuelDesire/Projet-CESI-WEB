@@ -7,7 +7,7 @@ router.post('/publier', controllerSocial.publish)
 router.post('/like', controllerSocial.like)
 router.post('/comment', controllerSocial.comment)
 router.post('/delete', controllerSocial.delete)
-router.get('/social', userController.verifyToken, controllerSocial.show)
+router.get('/social',  controllerSocial.show)
 router.post('/social-com', controllerSocial.show_comment)
 router.post('/count', controllerSocial.count_like)
 

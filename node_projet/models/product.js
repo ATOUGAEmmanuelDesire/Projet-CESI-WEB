@@ -27,5 +27,23 @@ class productModel{
             throw error;
         }
     }
+
+    static async addtocart(name, description, price, category, url){
+        try{
+            const[result] = await db.execute('CALL AddCart(?,?,?,?,?)', [name, description, price, category, url])
+            return result
+        }catch (error){
+            throw error
+        }
+    }
+
+    static async showcart(){
+        try{
+            const [result] = await  db.execute('CALL GetCard')
+            return result
+        }catch (error){
+            throw error
+        }
+    }
 }
 module.exports = productModel;

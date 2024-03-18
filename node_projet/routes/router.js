@@ -11,10 +11,11 @@ const boutiqueController = require('../controller/boutiqueController');
 const userController = require("../controller/aunthentificationController");
 
 router.get('/boutique', boutiqueController.renderBoutique, userController.verifyToken)
-router.get('/accueil', accueilController.renderAccueil)
+// router.get('/accueil', userController.verifyToken,accueilController.renderAccueil)
+router.get('/accueil',accueilController.renderAccueil)
 router.get('/inscription', inscriptionController.renderInscription)
 router.get('/connexion', connexionController.renderConnexion)
 
-router.get('/admin', controllerAdmin.renderAdmin, userController.verifyToken)
+router.get('/admin', userController.verifyToken, controllerAdmin.renderAdmin)
 router.use(notfound)
 module.exports = router;

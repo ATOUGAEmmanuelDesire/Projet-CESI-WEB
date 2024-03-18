@@ -9,16 +9,11 @@ class AuthController {
         try {
             const user = await UserModel.authenticate(email, password);
             if (user) {
-                const passwordMatch = await bcrypt.compare(password, user.password); // Vérification du mot de passe
-                if (passwordMatch) {
-                    const userId = user.id;
-                    const token = jwt.sign({ userId, email }, 'secretkey', { expiresIn: '1h' });
-                    console.log(token)
-                    res.status(200).json({ message: 'Connexion réussie', user, token });
-                } else {
-                    console.error("Email ou mot de passe incorrect");
-                    res.status(401).json({ message: 'Email ou mot de passe incorrect' });
-                }
+                const userId = user.id;
+                const token = jwt.sign({ userId, email }, 'secretkey', { expiresIn: '1h' });
+                console.log(token);
+                res.status(200).json({ message: 'Connexion réussie', user, token });
+
             } else {
                 console.error("Email ou mot de passe incorrect");
                 res.status(401).json({ message: 'Email ou mot de passe incorrect' });
@@ -33,8 +28,7 @@ class AuthController {
         const { name, surname, email, password, localisation } = req.body;
         const status = 1;
         try {
-            const hashedPassword = await bcrypt.hash(password, 10); // Hachage du mot de passe
-            const userId = await UserModel.register(name, surname, email, hashedPassword, status, localisation);
+            const userId = await UserModel.register(name, surname, email, password, status, localisation);
             res.status(200).json({ message: 'Utilisateur enregistré avec succès', userId });
             console.log(res.status);
         } catch (error) {
@@ -60,6 +54,14 @@ class AuthController {
     }
 
     static async verifyToken(req, res, next) {
+        // const {token} = req.body;
+        // try{
+        //     if (token){
+        //         res.status(200).json(2);
+        //     }
+        // }catch (error){
+        //     res.error(error)
+        // }
         try {
             const token = req.headers.authorization.split(' ')[1];
             const decodedToken = jwt.verify(token, 'secretkey');
@@ -68,9 +70,8 @@ class AuthController {
 
             };
             req.token = token; // Ajouter le token à la requête pour une utilisation ultérieure si nécessaire
-            next();
         } catch (error) {
-            res.status(401).redirect("/cesi-bde/connexion");
+            res.status(401);
             console.log(error);
         }
     }

@@ -36,6 +36,25 @@ class productController{
         }
 
     }
+
+    static async addToCart(req, res, next){
+        const{name, description, price, category, url} = req.body
+        try{
+            const update = await productModel.addtocart(name, description, price, category, url)
+            res.status(200).json({message: "ajout réussi", update})
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+    static async showCart(req, res, next){
+        try{
+            const [rows] = await productModel.showcart()
+            res.render('panier', {panier: rows})
+        }catch (error){
+            console.log(error)
+        }
+    }
 }
 
 module.exports =  productController;

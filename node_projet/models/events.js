@@ -12,7 +12,6 @@ class EventsModel {
         }
     }
 
-
     static async listEvents(){
         try{
             const[row] = await db.execute('CALL GetEvents()')
@@ -37,6 +36,24 @@ class EventsModel {
             throw error;
         }
     }
+    static async passEvents(){
+        try{
+            const[row] = await db.execute("CALL GetPastsEvents")
+            return row
+        }catch (error){
+            throw error
+        }
+    }
+
+    static async eventsI(){
+        try{
+            const[row] = await db.execute("CALL GetIdeas")
+            return row
+        }catch (error){
+            throw error
+        }
+    }
+
 }
 
 module.exports =  EventsModel;

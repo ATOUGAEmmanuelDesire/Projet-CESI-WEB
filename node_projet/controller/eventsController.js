@@ -1,12 +1,12 @@
 const eventsModel = require('../models/events')
 
 class EventsController{
-    static async addEvents(req, res){
-        const {name, description, begin, time, statut} = req.body;
+    static async add(req, res){
+        const {name, description, begin, time} = req.body;
+        const statut = 0
         try{
             const events =  await eventsModel.addEvents(name, description, begin, time, statut);
             res.status(200).json({message: 'événments enregistré avec succès', events})
-            res.status(200).send('/cesi-bde/events')
 
         }catch (error){
             console.error("Erreur lors de l\'enregistrement de l\'événements: ", error)
@@ -26,8 +26,9 @@ class EventsController{
     }
 
     static  async valideEvents(req, res){
+        const {id} = req.body;
         try{
-            const result =  await eventsModel.validateEvents()
+            const result =  await eventsModel.validateEvents(id)
             res.status(200).alert("événements valider avec succès", result)
         }catch (error){
             console.error("Erreur lors de la mise à jour du statut: ", error)
@@ -46,8 +47,26 @@ class EventsController{
         }
     }
 
-    static  async renderIdeas(req, res){
-        res.status(200).render('Ideas')
+    static async renderPastEvents(req, res){
+        try{
+            const [result] =  await eventsModel.passEvents()
+            res.status(200).render('PastsEvents', {pastevents: result})
+        }catch (error){
+            console.error(error)
+        }
+    }
+
+    static async renderEventsI(req, res){
+        try{
+            const[result] = await eventsModel.eventsI()
+            res.status(200).render('ideas', {events: result})
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+    static async renderAddIdea(req, res){
+        res.status(200).render('Ideas_box_f')
     }
 }
 

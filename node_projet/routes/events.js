@@ -3,10 +3,12 @@ const router = express.Router();
 const controllerEvents = require('../controller/eventsController')
 
 
-router.post('/addevents', controllerEvents.addEvents)
+router.post('/addevents', controllerEvents.add)
 router.get('/events', controllerEvents.listEvents)
 router.post('/validate', controllerEvents.valideEvents)
 router.delete('/delete', controllerEvents.deleteEvents)
-router.get('/ideas', controllerEvents.renderIdeas)
+router.get('/ideas', controllerEvents.renderEventsI)
+router.get('/past', controllerEvents.renderPastEvents)
+router.get('/addIdea', controllerEvents.renderAddIdea)
 
 module.exports =  router

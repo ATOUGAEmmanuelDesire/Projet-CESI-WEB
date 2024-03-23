@@ -17,5 +17,7 @@ router.get('/inscription', inscriptionController.renderInscription)
 router.get('/connexion', connexionController.renderConnexion)
 
 router.get('/admin', userController.verifyToken, controllerAdmin.renderAdmin)
+router.get('/mentions', userController.mentions)
+router.get('/pay', userController.pay)
 router.use(notfound)
 module.exports = router;

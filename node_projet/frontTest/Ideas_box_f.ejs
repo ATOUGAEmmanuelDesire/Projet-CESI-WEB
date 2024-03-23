@@ -6,34 +6,33 @@
     <title>Ideas box</title>
 </head>
 <body>
-    <br>
-    <br>
     <div class="row">
         <div class="col-1" style="width: 40%; ">
             <h2>Send your ideas here</h2><br>
             <form id="formideas" method="post">
                 <div class="mb-3">
                     <label for="Name" class="form-label">Name of the event :</label><br><br>
-                    <input type="text" name="Name" class="form-control" id="Name" aria-describedby="Name"><br>
+                    <input type="text" name="name" class="form-control" id="Name" aria-describedby="Name"><br>
                 </div>
                 <div class="mb-3">
-                    <label for="Description" class="form-label">Description :</label><br><br>
-                    <input type="text" name="Description" class="form-control" id="Description"><br>
+                    <label for="description" class="form-label">Description :</label><br><br>
+                    <input type="text" name="description" class="form-control" id="description"><br>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Event image (URL LINK) :</label><br><br>
                     <input type="file" name="url" class="form-control" id="image"><br>
                 </div>
                 <div class="mb-3">
-                    <label for="datebegin" class="form-label">begin the :</label><br><br>
-                    <input type="date" name="type" class="form-control" id="datebegin"><br>
+                    <label for="begin" class="form-label">begin the :</label><br><br>
+                    <input type="date" name="begin" class="form-control" id="begin"><br>
                 </div>
                 <div class="mb-3">
-                    <label for="datetime" class="form-label">Time of the event (1h ? 2h ?...):</label><br><br>
-                    <input type="date" name="type" class="form-control" id="datetime"><br>
+                    <label for="time" class="form-label">Time of the event (1h ? 2h ?...):</label><br><br>
+                    <input type="date" name="time" class="form-control" id="time"><br>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
                     $(document).ready(function(){
                         $('#formideas').submit(function(event){
@@ -50,21 +49,13 @@
                             xhr.onload = function(){
                                 if(xhr.status === 200){
                                     console.log(xhr.responseText);
-                                    let response = JSON.parse(xhr.responseText);
-
-                                    if(response.token){
-                                        localStorage.setItem('token', response.token);
-                                        console.log("ok");
-                                    }
                                     window.location.href = "/cesi-bde/ev/events"; // Redirection vers une page après une réponse réussie
                                 }else{
                                     console.error("Erreur lors de l'envoi des données", xhr.statusText);
-                                    alert("Erreur lors de la connexion");
                                 }
                             };
                             xhr.onerror = function(){
                                 console.error("Erreur lors de l'envoi des données.");
-                                alert("Erreur lors de l'inscription");
                             };
 
                             xhr.send(JSON.stringify(jsonData));

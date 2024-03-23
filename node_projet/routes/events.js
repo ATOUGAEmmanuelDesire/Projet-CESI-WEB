@@ -5,7 +5,7 @@ const controllerUser = require('../controller/aunthentificationController')
 
 
 router.post('/addevents', controllerEvents.add)
-router.get('/events', controllerUser.verifyToken,controllerEvents.listEvents)
+router.get('/events',controllerEvents.listEvents)
 router.post('/validate', controllerEvents.valideEvents)
 router.delete('/delete', controllerEvents.deleteEvents)
 router.get('/ideas', controllerEvents.renderEventsI)

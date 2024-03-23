@@ -29,9 +29,6 @@
             <li>
                 <a href="/cesi-bde/admin" data-text="Adminstration">Adminstration</a>
             </li>
-            <li>
-                <button data-text="logout" onclick="logout()">logout</button>
-            </li>
             <script>
                 function logout() {
                     fetch('http://localhost:3000/auth/logout', {
@@ -53,7 +50,7 @@
                             if (data === 2) {
                                 // Supprime le token
                                 localStorage.removeItem('token');
-                                alert('Token supprimé avec succès');
+                                window.location.href='/cesi-bde/connexion'
                             } else {
                                 console.log('La valeur de la réponse n\'est pas 2');
                             }
@@ -75,12 +72,11 @@
         <h1><span id="auto-typing" class="auto-typing"></span></h1>
         <p>The Student Union is the beating heart of campus life. It's where ideas are born,<br> friendships are forged, and memories are made.<br> Picture a dynamic space where laughter fills the air and lively discussions echo off the walls.<br> Every noticeboard is a call to action, and every event is a reason to celebrate.<br>
             More than just a physical location, <br>the Student Union is the spiritual center of the student community.</p>
-        <a href="/cesi-bde/inscription" class="cv">Log out</a>
+        <a class="cv" onclick="logout()">Log out</a>
     </section>
     <div class="overlay">
 
     </div>
-
     <script>
         const burgerContainer = document.querySelector('.burger-container');
         const navLinks = document.querySelector('.nav-links');

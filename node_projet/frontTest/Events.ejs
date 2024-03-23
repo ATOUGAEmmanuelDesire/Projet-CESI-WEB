@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,45 @@
 
 </head>
 <body>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('token');
+            if(!token) {
+                window.location.href = '/cesi-bde/connexion'
+            }
+        })
+    </script>
+    <script>
+        function logout() {
+            fetch('http://localhost:3000/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: 1 }),
+                credentials: 'include' // Inclut les cookies dans la requête
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Erreur de la requête');
+                    }
+                })
+                .then(data => {
+                    if (data === 2) {
+                        // Supprime le token
+                        localStorage.removeItem('token');
+                        alert('Token supprimé avec succès');
+                    } else {
+                        console.log('La valeur de la réponse n\'est pas 2');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script>
     <section id="home" class="home-container">
         <header id="header" class="header">
             <img src="/img/image.png" alt="Nature Emoi" class="logo">
@@ -44,10 +83,10 @@
             
         </div>
         <nav class="sidebar">
-            <a href="Ideas_box_f.ejs" class="sidebar-home">Ideas box</a>
+            <a href="/cesi-bde/ev/addIdea" class="sidebar-home">Add Idea</a>
             <a href="" class="sidebar-events">Download picture</a>
-            <a href="/cesi-bde/ev/pasts" class="sidebar-group">Pasts Events</a>
-            <a href="Ideas.ejs" class="sidebar-group">Ideas</a>
+            <a href="/cesi-bde/ev/past" class="sidebar-group">Pasts Events</a>
+            <a href="/cesi-bde/ev/ideas" class="sidebar-group">Ideas</a>
         </nav>
     </section>
 
@@ -68,7 +107,7 @@
 
     <footer id="footer" class="footer">
         <span class="copyrights">&copy; 2024 - THe BDe</span>
-        <a href="#" class="conditions">Condition générales de vente</a>
+        <a href="/cesi-bde/mentions">mentions légales</a>>
     </footer>
     <script>
         const burgerContainer = document.querySelector('.burger-container');

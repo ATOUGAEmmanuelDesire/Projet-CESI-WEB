@@ -75,6 +75,22 @@ class AuthController {
             console.log(error);
         }
     }
+
+    static async mentions(req, res, next){
+        try {
+            res.status(200).render('conditions')
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+    static  async pay(req, res, next){
+        try{
+            res.status(200).render('PayPal')
+        }catch (error){
+            console.log(error)
+        }
+    }
 }
 
 module.exports = AuthController;

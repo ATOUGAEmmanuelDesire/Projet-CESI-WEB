@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Effectuer un paiement PayPal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    form {
+      width: 300px;
+      margin: 0 auto;
+      border-radius: 10px;
+      border: 1px solid #d6df8a; /* Ajout de la bordure */
+      padding: 10px; /* Ajout de l'espacement intérieur */
+    }
+    
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 100px;
+      box-sizing: border-box;
+    }
+    
+    .paypal-logo {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+      <input type="hidden" name="item_name" value="Payment Description">
+      <input type="hidden" name="currency_code" value="USD">
+      <label for="amount">Montant du paiement :</label>
+      <input type="text" name="amount" placeholder="Montant du paiement">
+      <label for="card_number">Numéro de carte Visa :</label>
+      <input type="text" name="card_number" placeholder="Numéro de carte Visa">
+      <label for="expiration">Date d'expiration :</label>
+      <input type="text" name="expiration" placeholder="MM/AA">
+      <label for="cvv">Code de sécurité (CVV) :</label>
+      <input type="text" name="cvv" placeholder="Code de sécurité (CVV)"><br><br>
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Effectuer un paiement via PayPal">
+      <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    <div class="paypal-logo">
+      <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" alt="Logo PayPal">
+    </div>
+  </center>
+</body>
+</html>

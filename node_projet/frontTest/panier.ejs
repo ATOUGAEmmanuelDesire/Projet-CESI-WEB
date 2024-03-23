@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/shop.css">
+    <link rel="icon" href="university-_1_.ico" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+    <title>Panie</title>
+</head>
+<body>
+<a href="/cesi-bde/pay" >buy</a>
+    <%panier.forEach(function (prod) {%>
+        <div class="produit">
+            <img src="<%= prod.url_img%>" alt="Image du produit" class = "img">
+            <h3><%= prod.Name%>t</h3>
+            <p class="description"><%= prod.Description%></p>
+            <p class="price"><%= prod.price%> $</p>
+            <button onclick="ajouter()" >Acheter</button>
+        </div>
+    <%});%>
+</div>
+</body>
+</html>

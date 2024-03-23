@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-1" style="width: 40%; height: 50%;">
             <h2>Add a Goodie here</h2><br>
-            <form action=" nom du fichier de vérification" method="post">
+            <form id="sendForm" method="post">
                 <div class="mb-3">
                     <label for="Name" class="form-label">Name :</label><br><br>
                     <input type="text" name="Name" class="form-control" id="Name" aria-describedby="Name"><br>
@@ -39,11 +39,40 @@
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <script>
+                $(document).ready(function(){
+                    $('#sendForm').submit(function(event){
+                        event.preventDefault();
+                        let formData = $(this).serializeArray();
+                        let jsonData = {};
+                        formData.forEach(function(field){
+                            jsonData[field.name] = field.value;
+                        });
+
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("POST", "/product/add", true);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.onload = function(){
+                            if(xhr.status === 200){
+                                console.log(xhr.responseText);
+                            }else{
+                                console.error("Erreur lors de l'envoi des données", xhr.statusText);
+                                alert("Erreur lors de l'envoie");
+                            }
+                        };
+
+                        xhr.send(JSON.stringify(jsonData));
+                    });
+                });
+            </script>
+
         </div>
     </div>
     <br>
     <br>
-    <%include ('footer.ejs')%>
-    <script src="script.js"></script>
+    <footer id="footer" class="footer"> <!-- Footer section -->
+        <span class="copyrights">&copy; 2024 - THe BDe</span>
+        <a href="#" class="conditions">Condition générales de vente</a>
+    </footer>
 </body>
 </html>

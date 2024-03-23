@@ -14,10 +14,21 @@
 <script>
     window.addEventListener('DOMContentLoaded', function () {
         const token = localStorage.getItem('token');
-        if(!token) {
-            window.location.href = '/cesi-bde/connexion'
-        }
-    })
+        alert(token);
+        fetch('/auth/verify', {
+            method: 'POST',
+            headers: {
+                'Authorization': token ? 'Bearer ' + token : undefined
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
 </script>
 <body>
     <section id="home" class="home-container"> <!-- Section for the home page content -->
@@ -36,17 +47,10 @@
                 </li>
                 <li>
                     <a href="/cesi-bde/so/social"  data-text="Social">Social</a>
-                </li>
+                </li> 
                 <li>
                     <a href="/cesi-bde/admin" data-text="Administration">Administration</a>
                 </li>
-                <li>
-                    <a href="/cesi-bde/product/addprod" data-text="Add a goodies">Add a goodies</a>
-                </li>
-                <li>
-                    <a href="/cesi-bde/product/cart" data-text="Your basket">Your basket</a>
-                </li>
-
             </ul>
             <div  >
                 <a href="" class="panier fas fa-truck" ></a>
@@ -63,6 +67,16 @@
                 <span class="scroll-text" data-text="Scroll">Scroll</span> <!-- Span for scroll text -->
                 <i class="scroll-icon fas fa-angle-down"></i>
             </a>
+            <div>
+            <ul class="nav-links">
+                <nav class="sidebar">
+                    <li><a href="Ideas_box_f.ejs" class="sidebar">Add a goodies</a></li>
+                    <li><a href="" class="sidebar">Remove a goodies</a></li>
+                    <li><a href="" class="sidebar">Pay issues</a></li>
+                    <li><a href="Validate_event_f.ejs" class="sidebar">Your basket</a></li>
+                </nav>
+            </ul>
+            </div>
         </div>
     </section>
     <section id="delivery" class="delivery-container"> <!-- Section for delivery information -->
@@ -98,31 +112,10 @@ Contactless home delivery            </p>
                 <h3><%= prod.Name%>t</h3>
                 <p class="description"><%= prod.Description%></p>
                 <p class="price"><%= prod.price%> $</p>
-                <button onclick="ajouter()" >Acheter</button>
+                <button class = "btn-primary">Acheter</button>
+                <button type="button" class = "btn-primary"><img src="chemin/vers/votre/logo-poubelle.png" alt="Logo Poubelle"></button>
+                <button type="button" class = "btn-primary"><img src="chemin/vers/votre/logo-modification.png" alt="Logo modification"></button>
             </div>
-            <script>
-                function ajouter(product){
-                   const productData = {
-                       name: "<%=prod.Name%>",
-                       description: "<%=prod.Description%>",
-                       price: "<%= prod.price%>",
-                       category: "<%= prod.Category%>",
-                       url: "<%=prod.url_img%>"
-                   };
-
-                    const xhr = new XMLHttpRequest();
-                    xhr.open('POST', '/cesi-bde/product/add-to-cart')
-                    xhr.setRequestHeader('Content-Type', 'application/json')
-                    xhr.onload = function (){
-                        if(xhr.status === 200){
-                            const response = JSON.parse(xhr.responseText)
-                        }else{
-                            console.log("erreur")
-                        }
-                    }
-                    xhr.send(JSON.stringify(productData))
-                }
-            </script>
             <%});%>
         </div>
     </section>
@@ -136,6 +129,8 @@ Contactless home delivery            </p>
                     <p class="description"><%= prod.Description%></p>
                     <p class="price"><%= prod.price%> $</p>
                     <button class ="btn-primary">Acheter</button>
+                    <button type="button" class = "btn-primary"><img src="chemin/vers/votre/logo-poubelle.png" alt="Logo Poubelle"></button>
+                    <button type="button" class = "btn-primary"><img src="chemin/vers/votre/logo-modification.png" alt="Logo modification"></button>
                 </div>
             <%});%>
         </div>

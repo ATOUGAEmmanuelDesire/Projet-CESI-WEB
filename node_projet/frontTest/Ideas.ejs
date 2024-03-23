@@ -16,24 +16,22 @@
 <body>
     <section id="home" class="home-container">
         <header id="header" class="header">
-            <img src="image.png" alt="Nature Emoi" class="logo">
+            <img src="/img/image.png" alt="Nature Emoi" class="logo">
             <ul class="nav-links">
                 <li>
-                    <a href="Home.ejs" data-text="Home" class="poi">Home</a>
+                    <a href="/cesi-bde/accueil" data-text="Home" class="poi">Home</a>
                 </li>
                 <li>
-                    <a href="shop.ejs" data-text="Shop" class="poi">Shop</a>
+                    <a href="/cesi-bde/boutique" data-text="Shop" class="poi">Shop</a>
                 </li>
                 
                 <li>
-                    <a href="Events.ejs" data-text="Events" class="poi">Events</a>
+                    <a href="/cesi-bde/ev/events" data-text="Events" class="poi">Events</a>
                 </li>
                 <li>
-                    <a href="Social.ejs" data-text="Social" class="poi">Social</a>
+                    <a href="/cesi-bde/social" data-text="Social" class="poi">Social</a>
                 </li>
-                <li>
-                    <a href="Admin.ejs" data-text="Administration" class="poi">Administration</a>
-                </li>
+
             </ul>
             <div class="burger-container">
                 <div class="burger"></div>
@@ -44,52 +42,46 @@
             
         </div>
         <nav class="sidebar">
-            <a href="Ideas_box_f.ejs" class="sidebar-home">Ideas box</a>
-            <a href="" class="sidebar-messages">Remove event</a>
+            <a href="/cesi-bde/ev/addevents" class="sidebar-home">Add Idea</a>
+            <a href="/cesi-bde/ev/delete" class="sidebar-messages">Remove event</a>
             <a href="" class="sidebar-events">Download picture</a>
-            <a href="Validate_event_f.ejs" class="sidebar-group">Validate</a>
-            <a href="PastsEvents.ejs" class="sidebar-group">Pasts Events</a>
-            <a href="Ideas.ejs" class="sidebar-group">Ideas</a>
+            <a href="/cesi-bde/ev/validate" class="sidebar-group">Validate</a>
+            <a href="/cesi-bde/ev/past" class="sidebar-group">Pasts Events</a>
         </nav>
     </section>
     <center>
     <div class="container site">
-        
         <h1 class="section-title">Ideas</h1> <!-- Heading for best sellers -->
-        <div class="event">
-            <div class="event">
-                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
-                <div class="title">Nom de l'évènement</div>
-                <div class="description">Description du produit</div>
-                <div class="price">Date</div>
-                <a href="/cesi-bde/ev/validate" class="sidebar-group">Validate</a>
-              </div><br>
-    
-              <div class="event">
-                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
-                <div class="title">Nom de l'évènement</div>
-                <div class="description">Description du produit</div>
-                <div class="price">Date</div>
-              </div><br>
-    
-              <div class="event">
-                <img src="chemin/vers/votre/image.jpg" alt="Image du produit">
-                <div class="title">Nom de l'évènement</div>
-                <div class="description">Description du produit</div>
-                <div class="price">Date</div><br>
-              </div>
-            </div>
-
-
-            
-        <main class="main">
-            
-        </main>
-        
-        
-
-
+            <% events.forEach(function (ev) { %>
+                <div class="event">
+                    <img src="/img/<%= ev.Image%>" alt="Image du produit">
+                    <div class="title"><%= ev.Name %></div>
+                    <div class="description"><%= ev.Description %></div>
+                    <div class="begin-the"><%= ev.begin_the %></div>
+                    <button onclick="updateElement(<%= ev.id%>)">validate</button>
+                </div>
+                <br>
+            <% }); %>
     </div>
+        <script>
+            function updateElement(id){
+                fetch(`/cesi-bde/ev/validate/${id}`, {
+                    method: 'POST'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Validation successful');
+                            window
+                            // Effectuer une action supplémentaire après la validation réussie
+                        } else {
+                            console.error('Validation failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error occurred during validation:', error);
+                    });
+            }
+        </script>
 </center>
     <footer id="footer" class="footer">
         <span class="copyrights">&copy; 2024 - THe BDe</span>

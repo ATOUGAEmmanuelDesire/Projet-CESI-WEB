@@ -2,7 +2,9 @@ const productModel = require('../models/product')
 
 class productController{
 
-
+    static  async showProduct(req, res, next){
+        res.render('Add_a_goodie_f')
+    }
     static async Product(req, res, next){
         const {name, price, description, url, category} = req.body;
         try{

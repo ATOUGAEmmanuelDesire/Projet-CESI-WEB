@@ -5,6 +5,7 @@ const userRoutes =  require('./routes/users')
 const productRoutes = require('./routes/Product')
 const eventsRoutes = require('./routes/events')
 const socialRoutes = require('./routes/social')
+const {renderConnexion} = require("./controller/connexionController");
 
 
 app.set('view engine', 'ejs');

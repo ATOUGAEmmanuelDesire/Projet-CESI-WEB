@@ -35,6 +35,14 @@
                     <a href="/cesi-bde/admin" data-text="Administration">Administration</a>
                 </li>
             </ul>
+            <script>
+                window.addEventListener('DOMContentLoaded', function () {
+                    const token = localStorage.getItem('token');
+                    if(!token) {
+                        window.location.href = '/cesi-bde/connexion'
+                    }
+                })
+            </script>
             <div class="burger-container">
                 <div class="burger"></div>
             </div>
@@ -59,24 +67,30 @@
                     <div class="card-title">THe BDe</div>
                     <div class="card-time"> since 10s</div>
                 </header>
-                <%post.forEach(function (image){%>
                 <div class="card-body">
                     <p>
-                        <img src="<%= image.url_image%>" alt="social" class="fullwidth">
+                        <img src="/img/social1.jpg" alt="social" class="fullwidth">
                     </p>
                     <p>
                 </div>
-                <%});%>
                 <footer class="card-footer">
-                    <div class="card-like">Likes</div>
-                    <div class="card-comments">Comments</div>
+                    <div id="like-icon" class="icon">
+                        <img src="/img/like.png" alt="Like icon">
+                        <span id="like-count">0</span>
+                    </div>
+                    <div class="comment-section">
+                        <input type="text" id="comment-input" placeholder="Enter your comment">
+                        <button id="submit-comment">Comment</button>
+                        <ul id="comment-list"></ul>
+                        <a href="/cesi-bde/mentions">mentions légales</a>
+                    </div>
                 </footer>
             </article>
         </main>
     </div>
     <footer id="footer" class="footer">
         <span class="copyrights">&copy; 2024 - THe BDe</span>
-        <a href="#" class="conditions">Condition générales de vente</a>
+        <a href="/cesi-bde/mentions" class="conditions">Condition générales de vente</a>
     </footer>
     <script>
         const burgerContainer = document.querySelector('.burger-container');
@@ -87,6 +101,44 @@
             navLinks.classList.toggle('active');
         })
     </script>
+    <script>
+        const likeIcon = document.getElementById('like-icon');
+        const likeCount = document.getElementById('like-count');
+
+        let count = 0;
+        let liked = false;
+
+        likeIcon.addEventListener('click', function() {
+            if (!liked) {
+                count++;
+                likeCount.textContent = count;
+                likeIcon.classList.add('clicked');
+                liked = true;
+            } else {
+                count--;
+                likeCount.textContent = count;
+                likeIcon.classList.remove('clicked');
+                liked =false;
+            }
+        });
+
+        const submitCommentBtn = document.getElementById('submit-comment');
+        const commentInput = document.getElementById('comment-input');
+        const commentList = document.getElementById('comment-list');
+
+        submitCommentBtn.addEventListener('click', function() {
+            const commentText = commentInput.value.trim();
+            if (commentText !== '') {
+                const commentItem = document.createElement('li');
+                commentItem.textContent = commentText;
+                commentList.appendChild(commentItem);
+                commentInput.value = '';
+            } else {
+                alert('Veuillez entrer un commentaire valide.');
+            }
+        });
+    </script>
+
 
 </body>
 </html>

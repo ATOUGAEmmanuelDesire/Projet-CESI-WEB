@@ -3,6 +3,7 @@ const router =  express.Router()
 const produitcontroller =  require('../controller/produitController')
 
 router.post('/add', produitcontroller.Product)
+router.get('/addprod', produitcontroller.showProduct)
 router.post('/modify', produitcontroller.updateProduct)
 router.post('/erase', produitcontroller.eraseProduct)
 router.post('/add-to-cart', produitcontroller.addToCart)
